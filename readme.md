@@ -3,6 +3,11 @@ DataJournal App will allow users to track a daily journal for different activiti
 
 This data will then be used to find correlation between results or outcomes and different data points that are being recorded to allow you to see what events or actions have the biggest impact on your output.   
 
+## Install Instructions
+
+1. (Install Meteor) [https://www.meteor.com/] 
+
+
 ## ToDo
 * Registation redirect and template for new users
 
