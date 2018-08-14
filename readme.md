@@ -5,7 +5,11 @@ This data will then be used to find correlation between results or outcomes and 
 
 ## Install Instructions
 
-1. (Install Meteor) [https://www.meteor.com/] 
+1. Install NPM  [https://www.npmjs.com/get-npm]
+2. Install Meteor [https://www.meteor.com/] 
+3. Clone this repository  "git clone https://github.com/mikeacre/DataJournal.git"
+4. from directory "meteor npm install"
+5  from directory "meteor --settings=settings.json"
 
 
 ## ToDo
