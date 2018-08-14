@@ -1,0 +1,9 @@
+.profile {
+  width: 50%;
+  float:left;
+  align-self: center;
+}
+
+.profile_photo{
+  width:100px;
+}

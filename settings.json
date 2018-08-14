@@ -1,0 +1,10 @@
+{
+  "GOOGLE_SECRET" : "xOzHvR-llf9OHj8OvaFrrFHR",
+  "GOOGLE_CLIENTID" : "520638548771-o4nf4her8cuv4ukfj8v9ouggjnl5ekbd.apps.googleusercontent.com",
+  "public":{
+    "test": "yo",
+    "ga" : {
+      "account": "UA-123897373-1"
+    }
+  }
+}
