@@ -13,11 +13,13 @@ This data will then be used to find correlation between results or outcomes and 
 
 
 ## ToDo
-* Registation redirect and template for new users
+* ~~Registation redirect and template for new users~~
 
-* Profile page
+* ~~Profile page~~
 
 * ~~allow each datapoint to have options (yes/no , good/bad, 0-9) or custom string entry. Allow to set their own options for examples: What did you workout today: {options: [legs, arms, chest, cardio]}~~
+
+* hide/show custom value field in data entry
 
 * connect to google API (get auto data tracking set up)
 

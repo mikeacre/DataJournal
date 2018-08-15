@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
+//import './client/lib/formmask.js';
 
 SimpleSchema.extendOptions(['autoform']);
 
@@ -22,14 +23,75 @@ CustomValue = new SimpleSchema({
   }
 });
 
-/*
-DataValueSchema = new SimpleSchema({
-  name: {
-    type: String,
-    label: "Data Name"
-  },
-})
-*/
+UserProfileSchema = new SimpleSchema({
+    firstName: {
+      type: String,
+      label: "First Name"
+    },
+    lastName: {
+      type: String,
+      label: "Last Name"
+    },
+    birthday:{
+      type: Date,
+      autoform: {
+        type: "bootstrap-datepicker",
+        datePickerOptions: {
+          autoclose: true
+        }
+      }
+    },
+    zipcode:{
+      type: String,
+      label: "Zip Code",
+      autoform:{
+        mask: '00000',
+        type: 'masked-input',
+        placeholder: '00000'
+      }
+    }
+});
+
+// if placeholder isnt working check for 'npm i jquery-mask-plugin'
+
+
+UserSchema = new SimpleSchema({
+    _id: {
+        type: String,
+        regEx: SimpleSchema.RegEx.Id
+    },
+    emails: {
+        type: Array,
+        blackbox: true
+    },
+    "emails.$": {
+        type: Object,
+        blackbox: true
+    },
+    "emails.$.address": {
+        type: String,
+        regEx: SimpleSchema.RegEx.Email
+    },
+    "emails.$.verified": {
+        type: Boolean,
+        optional: true
+    },
+    createdAt: {
+        type: Date,
+    },
+    profile: {
+        type: UserProfileSchema,
+        optional:true
+    },
+    services: {
+        type: Object,
+        optional: true,
+        blackbox: true
+    }
+});
+
+Meteor.users.attachSchema(UserSchema);
+
 DataPointSchema = new SimpleSchema({
   name: {
     type: String,
@@ -56,7 +118,9 @@ DataPointSchema = new SimpleSchema({
   custom_options: {
     type: String,
     label: "Custom Values",
-    defaultValue: "None",
+    autoform:{
+      placeholder: 'Seperate Options with Commas',
+    },
     optional: true
   },
   value:{

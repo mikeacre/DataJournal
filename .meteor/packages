@@ -31,8 +31,8 @@ fastclick
 raix:handlebar-helpers
 aldeed:collection2-core@2.0.0
 aldeed:autoform@6.0.0
-accounts-ui@1.3.0
 accounts-password@1.5.1
+accounts-ui
 matb33:bootstrap-glyphicons
 meteortoys:allthings
 zimme:active-route
@@ -42,3 +42,7 @@ check@1.3.1
 accounts-google
 service-configuration
 jquery
+twbs:bootstrap  # required for datepicker
+rajit:bootstrap3-datepicker # required for datepicker
+aldeed:autoform-bs-datepicker
+mrt:mask@0.0.1  #needed for mask to workout

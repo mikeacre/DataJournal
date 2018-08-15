@@ -6,6 +6,8 @@ import './lib/routes.js';
 import '/client/layouts/templates.html';
 import './lib/constants.js';
 import './main.css';
+import './lib/formmask.js';
+
 
 Meteor.startup(() => {
   Meteor.absoluteUrl.defaultOptions.rootUrl = 'http://www.strikesparks.com:3000';
@@ -18,6 +20,28 @@ Meteor.startup(() => {
     }
   });
 
+});
+
+Template.register.events({
+    'submit form': function(event){
+        event.preventDefault();
+        var emailVar = event.target.registerEmail.value;
+        var passwordVar = event.target.registerPassword.value;
+        Accounts.createUser({
+            email: emailVar,
+            password: passwordVar
+        });
+        Meteor.loginWithPassword(emailVar, passwordVar);
+    }
+});
+
+Template.login.events({
+    'submit form': function(event) {
+        event.preventDefault();
+        var emailVar = event.target.loginEmail.value;
+        var passwordVar = event.target.loginPassword.value;
+        Meteor.loginWithPassword(emailVar, passwordVar);
+    }
 });
 
 Template.MainLayout.helpers({
@@ -77,7 +101,7 @@ Template.NewEntry.helpers({
 
 Template.Profile.helpers({
   user: ()=> {
-    return Meteor.user().services;
+    return Meteor.user();
   }
 });
 
