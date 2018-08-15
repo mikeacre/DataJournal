@@ -3,18 +3,21 @@ import '/collections/tracker.js';
 
 
 Accounts.onLogin(function(){
-//  FlowRouter.go('Recipes');
+  if(Meteor.user().profile)
+    FlowRouter.go('selectjournal');
+  else
+    FlowRouter.go('profile');
 });
 
 Accounts.onLogout(function(){
-//  FlowRouter.go('home');
+   FlowRouter.go('home');
 });
 
 
 
 FlowRouter.triggers.enter([function(context, redirect){
   if(!Meteor.userId()){
-    //FlowRouter.go('home');
+    FlowRouter.go('home');
   }
 }])
 

@@ -6,7 +6,7 @@ This data will then be used to find correlation between results or outcomes and 
 ## Install Instructions
 
 1. Install NPM  [https://www.npmjs.com/get-npm]
-2. Install Meteor [https://www.meteor.com/] 
+2. Install Meteor [https://www.meteor.com/]
 3. Clone this repository  "git clone https://github.com/mikeacre/DataJournal.git"
 4. from directory "meteor npm install"
 5.  from directory "meteor --settings=settings.json"
@@ -17,7 +17,7 @@ This data will then be used to find correlation between results or outcomes and 
 
 * Profile page
 
-* allow each datapoint to have options (yes/no , good/bad, 0-9) or custom string entry. Allow to set their own options for examples: What did you workout today: {options: [legs, arms, chest, cardio]}
+* ~~allow each datapoint to have options (yes/no , good/bad, 0-9) or custom string entry. Allow to set their own options for examples: What did you workout today: {options: [legs, arms, chest, cardio]}~~
 
 * connect to google API (get auto data tracking set up)
 
