@@ -21,9 +21,7 @@ This data will then be used to find correlation between results or outcomes and 
 
 * ~~fix the select function~~
 
-* view profiles
-
-* edit journal
+* ~~edit journal~~
 
 * hide/show custom value field in data entry
 
