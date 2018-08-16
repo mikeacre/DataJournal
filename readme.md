@@ -5,7 +5,7 @@ This data will then be used to find correlation between results or outcomes and 
 
 This will also provide sentiment analysis for the journal entries themselves.  
 
-Demo Available at: [http://69.127.86.185/] OAuth not currently available on demo.
+Demo Available at: [http://69.127.86.185:3000] OAuth not currently available on demo.
 
 ## Install Instructions
 
