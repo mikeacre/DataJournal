@@ -19,6 +19,12 @@ This data will then be used to find correlation between results or outcomes and 
 
 * ~~allow each datapoint to have options (yes/no , good/bad, 0-9) or custom string entry. Allow to set their own options for examples: What did you workout today: {options: [legs, arms, chest, cardio]}~~
 
+* ~~fix the select function~~
+
+* view profiles
+
+* edit journal
+
 * hide/show custom value field in data entry
 
 * connect to google API (get auto data tracking set up)
@@ -27,7 +33,7 @@ This data will then be used to find correlation between results or outcomes and 
 
 * create style sheet
 
-* create users/profile
+* ~~create users/profile~~
 
 * create admin section
 

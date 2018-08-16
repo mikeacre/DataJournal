@@ -1,12 +1,14 @@
 <template name="MainLayout">
-  <div class="header">
-    <h1>Data Journal</h1>
-    {{> loginButtons}}
-    {{> Nav }}
-  </div>
-  <div class="container">
-    <div class="content">
-      {{> Template.dynamic template=main}}
+  <div class="body">
+    <div class="header">
+      <h1><a href="/">Data Journal</a></h1>
+      {{> loginButtons}}
+      {{> Nav }}
+    </div>
+    <div class="container">
+      <div class="content">
+        {{> Template.dynamic template=main}}
+      </div>
     </div>
   </div>
 </template>
@@ -33,26 +35,18 @@
       {{>afQuickField name='title'}}
       {{>afQuickField name='journalId'}}
       {{#each value in journals.datapoints}}
-      <input name="datapoints.{{@index}}.name" data-schema-key="datapoints.{{@index}}.name" value={{value.name}} readonly type="hidden">
-      <input name="datapoints.{{@index}}.description" data-schema-key="datapoints.{{@index}}.description" value={{value.description}} type="hidden">
-      <input name="datapoints.{{@index}}.type" data-schema-key="datapoints.{{@index}}.type" value={{value.type}} type="hidden">
-        {{#if (checkFor value.type 'cv')}}
-          {{value.name}}:
+        <input name="datapoints.{{@index}}.name" data-schema-key="datapoints.{{@index}}.name" value={{value.name}} readonly type="hidden">
+        <input name="datapoints.{{@index}}.description" data-schema-key="datapoints.{{@index}}.description" value={{value.description}} type="hidden">
+        <input name="datapoints.{{@index}}.type" data-schema-key="datapoints.{{@index}}.type" value={{value.type}} type="hidden">
+        <label>{{value.name}}:</label>
+        {{#if (checkFor value.type 'string')}}
+          <input type="text" placeholder="{{value.description}}" class="form-control" name="datapoints.{{@index}}.value" data-schema-key="datapoints.{{@index}}.value" value=""><br>
+        {{else}}
           <select class="form-control" name="datapoints.{{@index}}.value" data-schema-key="datapoints.{{@index}}.value">
-            {{#each derp in (test value.custom_options)}}
-              <option>{{derp}}</option>
+            {{#each option in (buildOptions value.type value.custom_options)}}
+              <option>{{option}}</option>
             {{/each}}
           </select><br>
-        {{else if (checkFor value.type 'yn')}}
-        {{value.name}}:
-        <select class="form-control" name="datapoints.{{@index}}.value" data-schema-key="datapoints.{{@index}}.value">
-          <option>yes</option>
-          <option>no</option>
-        </select><br>
-        {{else}}
-          {{value.name}}:<input type="text" name="datapoints.{{@index}}.value" data-schema-key="datapoints.{{@index}}.value" value=""><br>
-          <i>{{value.description}}</i><br>
-          <br>
         {{/if}}
       {{/each}}
       {{>afQuickField name='entry' rows=6}}
@@ -62,13 +56,18 @@
 </template>
 
 <template name="NewJournal">
-  {{> quickForm collection="Journal" id="insertBookForm" type="insert"}}
+  {{> quickForm collection="Journal" id="newJournal" type="insert"}}
+</template>
+
+<template name="EditJournal">
+  {{> quickForm collection="Journal" doc=journal id="editJournal" type="update"}}
 </template>
 
 <template name="ViewJournals">
   <header><h1>Journals</h1></header>
+  <h3>Select a journal to edit it..</h3>
   {{#each journals}}
-    {{name}} by: {{username(createdBy)}}<br>
+    <a href="/editjournal/{{_id}}">{{name}}</a> by: {{username(createdBy)}}<br>
   {{/each}}
 
   <a href="/newjournal"><br><li class="fa fa-plus"></li>New Journal</a>
@@ -103,15 +102,10 @@
 
 <template name="Profile">
   {{#autoForm collection='Meteor.users' doc=user type='update' id='accountForm'}}
+    <h1> Please complete all info below for the most accurate metrics.</h1>
     {{> afQuickField name='profile'}}
   <button type='submit' class="btn btn-primary">Save profile</button>
   {{/autoForm}}
-  <div class="profile">
-    <img src="{{user.google.picture}}" class="profile_photo"/><br>
-    <span><b>First Name:</b>{{user.google.given_name}}<li class="fa fa-edit"></li></span><br>
-    <span><b>Last Name:</b>{{user.google.family_name}}<li class="fa fa-edit"></li></span><br>
-    <span><b>E-mail:</b>{{user.google.email}}<li class="fa fa-edit"></li></span><br>
-  </div>
 </template>
 
 <template name="Registration">
@@ -119,7 +113,19 @@
 </template>
 
 <template name="Home">
-  Hey There {{user.name}}
+  <h3>Hey There {{user.firstName}}!</h3>
+  <p>
+    DataJournal App will allow users to track a daily journal for different activities or
+    emotions they wish to track progress or data on. They will be able to customize the data
+    points that each entry will record, and will allow data to be automatically collected,
+    such as locations throughout the day, weather, astrological events and so on.
+  </p>
+  <p>
+    This data will then be used to find correlation between results or outcomes and different
+    data points that are being recorded to allow you to see what events or actions have the
+    biggest impact on your output.
+  </p>
+
 </template>
 
 <template name="afMaskedInput">

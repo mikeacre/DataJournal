@@ -34,7 +34,7 @@ aldeed:autoform@6.0.0
 accounts-password@1.5.1
 accounts-ui
 matb33:bootstrap-glyphicons
-meteortoys:allthings
+#meteortoys:allthings
 zimme:active-route
 #gwendall:auth-client-callbacks
 datariot:ganalytics

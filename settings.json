@@ -2,7 +2,10 @@
   "GOOGLE_SECRET" : "xOzHvR-llf9OHj8OvaFrrFHR",
   "GOOGLE_CLIENTID" : "520638548771-o4nf4her8cuv4ukfj8v9ouggjnl5ekbd.apps.googleusercontent.com",
   "public":{
-    "test": "yo",
+    "options": {
+      "yn" : ["yes", "no"],
+      "on" : ["1","2","3","4","5","6","7","8","9","10"]
+    },
     "ga" : {
       "account": "UA-123897373-1"
     }

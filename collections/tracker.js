@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
-//import './client/lib/formmask.js';
+
 
 SimpleSchema.extendOptions(['autoform']);
 
@@ -180,6 +180,9 @@ EntrySchema = new SimpleSchema({
     label: "Journal ID",
     defaultValue: function() {
       return FlowRouter.getParam('id');
+    },
+    autoform:{
+      type: "hidden"
     }
   },
   createdAt: {

@@ -56,6 +56,13 @@ Template.NewJournal.events({
   }
 });
 
+Template.EditJournal.helpers({
+  journal: ( )=> {
+    var id = FlowRouter.getParam('id');
+    return Journal.findOne({_id:id});
+  }
+})
+
 Template.Home.helpers({
   user: ()=> {
     return Meteor.user().profile;
@@ -70,10 +77,10 @@ Template.ViewEntries.helpers({
 
 Template.ViewJournals.helpers({
   journals:  ()=> {
-    return Journal.find({});
+    return Journal.find({createdBy:Meteor.userId()});
   },
   username: ( id ) => {
-    return Meteor.users.findOne({_id:id}).profile.name;
+    return Meteor.users.findOne({_id:id}).profile.firstName;
   }
 });
 
@@ -89,13 +96,24 @@ Template.NewEntry.helpers({
     this.id = id;
     return Journal.findOne({_id:id});
   },
-  test: (options)=>{
-    return options.split(',');
-  },
   checkFor: (value, check)=> {
     if(value == check)
       return true;
     return false;
+  },
+  buildOptions: (value, options) => {
+    if (value == 'cv'){
+      return options.split(',');
+    }
+    else if (value == 'on') {
+      return Meteor.settings.public.options.on;
+    }
+    else if (value == 'yn'){
+      return Meteor.settings.public.options.yn;
+    }
+    else {
+      return false;
+    }
   }
 });
 

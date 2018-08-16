@@ -3,9 +3,7 @@ import '/collections/tracker.js';
 
 
 Accounts.onLogin(function(){
-  if(Meteor.user().profile)
-    FlowRouter.go('selectjournal');
-  else
+  if(!Meteor.user().profile)
     FlowRouter.go('profile');
 });
 
@@ -43,6 +41,15 @@ FlowRouter.route('/journals', {
     GAnalytics.pageview("journals");
   }
 });
+
+FlowRouter.route('/editjournal/:id', {
+  name: 'journals',
+  action: function() {
+    BlazeLayout.render('MainLayout', {main:'EditJournal'});
+    GAnalytics.pageview("journals");
+  }
+});
+
 FlowRouter.route('/newjournal', {
   name: 'newjournal',
   action: function() {
