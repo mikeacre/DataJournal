@@ -3,7 +3,9 @@ DataJournal App will allow users to track a daily journal for different activiti
 
 This data will then be used to find correlation between results or outcomes and different data points that are being recorded to allow you to see what events or actions have the biggest impact on your output.
 
-This will also provide sentiment analysis for the journal entries themselves.   
+This will also provide sentiment analysis for the journal entries themselves.  
+
+Demo Available at: [http://69.127.86.185/] OAuth not currently available on demo.
 
 ## Install Instructions
 
