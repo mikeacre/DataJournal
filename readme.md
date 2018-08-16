@@ -1,7 +1,9 @@
 # DataJournal
 DataJournal App will allow users to track a daily journal for different activities or emotions they wish to track progress or data on. They will be able to customize the data points that each entry will record, and will allow data to be automatically collected, such as locations throughout the day, weather, astrological events and so on.
 
-This data will then be used to find correlation between results or outcomes and different data points that are being recorded to allow you to see what events or actions have the biggest impact on your output.   
+This data will then be used to find correlation between results or outcomes and different data points that are being recorded to allow you to see what events or actions have the biggest impact on your output.
+
+This will also provide sentiment analysis for the journal entries themselves.   
 
 ## Install Instructions
 

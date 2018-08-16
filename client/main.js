@@ -63,6 +63,14 @@ Template.EditJournal.helpers({
   }
 })
 
+Template.EditJournal.events({
+  'click .delete': (  ) => {
+    var id = FlowRouter.getParam('id');
+    Journal.remove(id);
+    FlowRouter.go('home');
+  }
+})
+
 Template.Home.helpers({
   user: ()=> {
     return Meteor.user().profile;
@@ -71,7 +79,15 @@ Template.Home.helpers({
 
 Template.ViewEntries.helpers({
   entries:  ()=> {
-    return Entry.find({});
+    return Entry.find({createdBy: Meteor.userId()});
+  }
+});
+Template.ViewEntry.events({
+  'click .delete': (  ) => {
+    var id = FlowRouter.getParam('id');
+    Entry.remove(id);
+    alert("Entry has been deleted")
+    FlowRouter.go('home');
   }
 });
 
@@ -86,7 +102,11 @@ Template.ViewJournals.helpers({
 
 Template.SelectJournal.helpers({
   journals:  ()=> {
-    return Journal.find({});
+    var userJournals = Journal.find({createdBy:Meteor.userId()});
+    if(userJournals.count() > 0 )
+      return userJournals;
+    else
+        return false;
   }
 });
 

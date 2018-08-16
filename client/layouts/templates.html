@@ -15,18 +15,22 @@
 
 <template name="SelectJournal">
   <header><h1>Select Journal To Create a New Entry</h1></header>
-  {{#each journals}}
-    <div>
-      <b>Name:</b><br>
-      <a href="/newEntry/{{_id}}">{{name}}</a><br>
-      <ol>
-        {{#each datapoints}}
-          <li>{{name}}</li><br>
-        {{/each}}
-      </ol>
+  {{#if journals}}
+    {{#each journals}}
+      <div>
+        <b>Name:</b><br>
+        <a href="/newEntry/{{_id}}">{{name}}</a><br>
+        <ol>
+          {{#each datapoints}}
+            <li>{{name}}</li><br>
+          {{/each}}
+        </ol>
 
-    </div>
-  {{/each}}
+      </div>
+    {{/each}}
+  {{else}}
+    Please create a <a href="/newjournal">New Journal</a>
+  {{/if}}
 </template>
 
 <template name="NewEntry">
@@ -61,6 +65,7 @@
 
 <template name="EditJournal">
   {{> quickForm collection="Journal" doc=journal id="editJournal" type="update"}}
+  <span class="delete"><li class="fa fa-trash delete">DELETE JOURNAL</li></span>
 </template>
 
 <template name="ViewJournals">
@@ -85,7 +90,8 @@
       <b>{{name}} : </b> {{value}}<br>
     {{/each}}
     <b>Entry:</b><br>
-    {{entry.entry}}
+    {{entry.entry}}<br>
+    <span class="delete"><li class="fa fa-trash delete">DELETE ENTRY</li></span>
 </template>
 
 <template name="Nav">

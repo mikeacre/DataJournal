@@ -21,3 +21,8 @@
   margin: 15px;
   padding: 5px;
 }
+
+.delete {
+  color: red;
+  font-size: 1.5em;
+}
