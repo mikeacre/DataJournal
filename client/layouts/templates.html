@@ -42,15 +42,18 @@
         <input name="datapoints.{{@index}}.name" data-schema-key="datapoints.{{@index}}.name" value={{value.name}} readonly type="hidden">
         <input name="datapoints.{{@index}}.description" data-schema-key="datapoints.{{@index}}.description" value={{value.description}} type="hidden">
         <input name="datapoints.{{@index}}.type" data-schema-key="datapoints.{{@index}}.type" value={{value.type}} type="hidden">
-        <label>{{value.name}}:</label>
+        <label>{{value.name}}:<i>{{value.description}}</i></label>
         {{#if (checkFor value.type 'string')}}
           <input type="text" placeholder="{{value.description}}" class="form-control" name="datapoints.{{@index}}.value" data-schema-key="datapoints.{{@index}}.value" value=""><br>
+        {{else if (checkFor value.type 'num')}}
+            <input type="text" placeholder="{{value.description}}" class="form-control" name="datapoints.{{@index}}.value" data-schema-key="datapoints.{{@index}}.value" value=""><br>
         {{else}}
           <select class="form-control" name="datapoints.{{@index}}.value" data-schema-key="datapoints.{{@index}}.value">
             {{#each option in (buildOptions value.type value.custom_options)}}
               <option>{{option}}</option>
             {{/each}}
           </select><br>
+
         {{/if}}
       {{/each}}
       {{>afQuickField name='entry' rows=6}}
@@ -99,11 +102,26 @@
   ||<a href="/journals">Journals</a>//
   <a href="/entries">Entries</a>//
   <a href="/selectjournal"><li class="fa fa-plus"></li>New Entry</a>//
-  <a href="/profile"><li class="fa fa-user"></li>Profile</a>
+  <a href="/analysis"><li class="fa fa-chart-pie"></li>Analysis</a>//
+  <a href="/profile"><li class="fa fa-user"></li>Profile</a>//
+  <a href="/bucket"><li class="fa fa-bitbucket"></li>Show Bucket</a>
   ||
   {{else}}
     --- Please Login ---
   {{/if}}
+</template>
+
+<template name="Analysis">
+  <div class="row">
+    <canvas id="myChart" width="400" height="400"></canvas>
+  </div>
+</template>
+
+<template name="ShowBucket">
+  Test
+  {{#each item in bucketItem}}
+    {{item.Key}}
+  {{/each}}
 </template>
 
 <template name="Profile">

@@ -104,13 +104,14 @@ DataPointSchema = new SimpleSchema({
   type:{
     type: String,
     label: "Type",
-    allowedValues: ['yn', 'on', 'cv', 'string'],
+    allowedValues: ['yn', 'on', 'cv', 'string', 'num'],
     autoform: {
       options:{
         yn : "Yes/No",
         on : "Rating 1-10",
         string : "Text Entry",
-        cv : "Custom Options"
+        cv : "Custom Options",
+        num : "Number"
       },
       class: "testing"
     }
@@ -120,6 +121,7 @@ DataPointSchema = new SimpleSchema({
     label: "Custom Values",
     autoform:{
       placeholder: 'Seperate Options with Commas',
+      type : "hidden"
     },
     optional: true
   },

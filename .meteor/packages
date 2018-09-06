@@ -46,3 +46,5 @@ twbs:bootstrap  # required for datepicker
 rajit:bootstrap3-datepicker # required for datepicker
 aldeed:autoform-bs-datepicker
 mrt:mask@0.0.1  #needed for mask to workout
+edgee:slingshot  # Direct and secure file-uploads to AWS S3, Google Cloud Storage and others.
+peerlibrary:aws-sdk #AWS SDK smart package

@@ -17,25 +17,23 @@ Demo Available at: [http://69.127.86.185:3000] OAuth not currently available on 
 
 
 ## ToDo
-* ~~Registation redirect and template for new users~~
 
-* ~~Profile page~~
+* make analysis page
 
-* ~~allow each datapoint to have options (yes/no , good/bad, 0-9) or custom string entry. Allow to set their own options for examples: What did you workout today: {options: [legs, arms, chest, cardio]}~~
+* make charts
 
-* ~~fix the select function~~
+* allow upload photos
 
-* ~~edit journal~~
+* allow image detection on photos
 
-* hide/show custom value field in data entry
+* add DataHooks (allows to plug in to oauth API's to access your collected data)
 
 * connect to google API (get auto data tracking set up)
+
 
 * add classes to all elements
 
 * create style sheet
-
-* ~~create users/profile~~
 
 * create admin section
 
@@ -45,4 +43,6 @@ Demo Available at: [http://69.127.86.185:3000] OAuth not currently available on 
 
 * Build Python API for data
 
-* build initial deep learning algos
+* build initial correlation functions
+
+* implement deep learnign for sentiment analysis

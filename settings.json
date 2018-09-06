@@ -1,6 +1,8 @@
 {
   "GOOGLE_SECRET" : "xOzHvR-llf9OHj8OvaFrrFHR",
   "GOOGLE_CLIENTID" : "520638548771-o4nf4her8cuv4ukfj8v9ouggjnl5ekbd.apps.googleusercontent.com",
+  "AWS_KEY" : "AKIAJATUA3WX473E57IA",
+  "AWS_SECRET" : "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",
   "public":{
     "options": {
       "yn" : ["yes", "no"],

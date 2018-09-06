@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating'
 import SimpleSchema from 'simpl-schema';
+import Chart from 'chart.js';
+import { ReactiveVar } from 'meteor/reactive-var';
 
 import './lib/routes.js';
 import '/client/layouts/templates.html';
@@ -20,6 +22,41 @@ Meteor.startup(() => {
     }
   });
 
+});
+
+
+Template.Analysis.onRendered(function() {
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+    type: 'bubble',
+    data: {
+        datasets: [{
+          data: [{
+            x : 0.1,
+            y : 0.2,
+            r : 50,
+            label: 'hi'
+          },{
+            x : 0.3,
+            y : 0.1,
+            r : 50
+          },{
+            x : -0.1,
+            y : -0.2,
+            r : 50
+          }],
+          label: ["Red", "Blue", "Yellow"],
+        }],
+
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                min: 200
+            }]
+        }
+    }
+  });
 });
 
 Template.register.events({
@@ -52,7 +89,13 @@ Template.MainLayout.helpers({
 
 Template.NewJournal.events({
   'change .testing': function(event){
-    console.log(event);
+    thisone = this.name.split('.');
+    var tochange = 'datapoints.'+thisone[1]+'.custom_options';
+    if(event.target.value == 'cv'){
+      $('[name="'+tochange+'"]').prop('type', 'text');
+    }
+    else
+      $('[name="'+tochange+'"]').prop('type', 'hidden');
   }
 });
 
@@ -63,11 +106,29 @@ Template.EditJournal.helpers({
   }
 })
 
+Template.EditJournal.onCreated(function(){
+  //if($('#testhis').[0].value != ""){
+////    $('#testhis').[0].prop('type', 'text');
+  //}
+});
+
 Template.EditJournal.events({
   'click .delete': (  ) => {
     var id = FlowRouter.getParam('id');
     Journal.remove(id);
     FlowRouter.go('home');
+  },
+  'change .testing': function(event){
+    thisone = this.name.split('.');
+    var tochange = 'datapoints.'+thisone[1]+'.custom_options';
+    if(event.target.value == 'cv'){
+      $('[name="'+tochange+'"]').prop('type', 'text');
+    }
+    else
+      $('[name="'+tochange+'"]').prop('type', 'hidden');
+  },
+  'load .body': ()=>{
+    console.log('test');
   }
 })
 
@@ -99,6 +160,22 @@ Template.ViewJournals.helpers({
     return Meteor.users.findOne({_id:id}).profile.firstName;
   }
 });
+
+Template.ShowBucket.onCreated(
+  function loadBuckets(){
+    this.list = new ReactiveVar([]);
+    Meteor.call('getBucket', (error,result)=> {
+      this.list.set(result);
+    });
+  }
+);
+
+Template.ShowBucket.helpers({
+  bucketItem: () => {
+    return Template.instance().list.get();
+
+  }
+})
 
 Template.SelectJournal.helpers({
   journals:  ()=> {

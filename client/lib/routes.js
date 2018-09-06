@@ -77,6 +77,20 @@ FlowRouter.route('/profile', {
     GAnalytics.pageview("profile");
   }
 });
+FlowRouter.route('/bucket', {
+  name: 'bucket',
+  action: function() {
+    BlazeLayout.render('MainLayout', {main:'ShowBucket'});
+    GAnalytics.pageview("ShowBucket");
+  }
+});
+FlowRouter.route('/analysis', {
+  name: 'analysis',
+  action: function() {
+    BlazeLayout.render('MainLayout', {main:'Analysis'});
+    GAnalytics.pageview("profile");
+  }
+});
 FlowRouter.route('/NewEntry/:id', {
   name: 'newentry',
   action: function() {
