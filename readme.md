@@ -12,8 +12,10 @@ Demo Available at: [http://69.127.86.185:3000] OAuth not currently available on 
 1. Install NPM  [https://www.npmjs.com/get-npm]
 2. Install Meteor [https://www.meteor.com/]
 3. Clone this repository  "git clone https://github.com/mikeacre/DataJournal.git"
-4. from directory "meteor npm install"
-5.  from directory "meteor --settings=settings.json"
+4. rename settings-publis.json to settings.json
+5. insert your own API keys
+6. from directory "meteor npm install"
+7.  from directory "meteor --settings=settings.json"
 
 
 ## ToDo
