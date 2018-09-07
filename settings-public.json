@@ -1,0 +1,15 @@
+{
+  "GOOGLE_SECRET" : "XXX_API_KEY_HERE_XXX",
+  "GOOGLE_CLIENTID" : "XXX_API_KEY_HERE_XXX",
+  "AWS_KEY" : "XXX_API_KEY_HERE_XXX",
+  "AWS_SECRET" : "XXX_API_KEY_HERE_XXX",
+  "public":{
+    "options": {
+      "yn" : ["yes", "no"],
+      "on" : ["1","2","3","4","5","6","7","8","9","10"]
+    },
+    "ga" : {
+      "account": "UXXX_API_KEY_HERE_XXX"
+    }
+  }
+}
