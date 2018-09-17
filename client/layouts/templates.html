@@ -34,7 +34,7 @@
       <li><a href="/profile"><li class="fa fa-user"></li>Profile</a></li>
       <li><a href="/bucket"><li class="fa fa-bitbucket"></li>Show Bucket</a></li>
     </ul>
-    {{> loginButtons}}
+    <div class="login">{{> loginButtons}}</div>
   </nav>
   {{else}}
     <nav class="menu">
@@ -156,7 +156,11 @@
 </template>
 
 <template name="Home">
-  <h3>Hey There {{user.firstName}}!</h3>
+  {{#if user.firstName}}
+    <h3>Hey There {{user.firstName}}!</h3>
+  {{else}}
+    <h3> Hey! Please {{> loginButtons}}</h3>
+  {{/if}}
   <p>
     DataJournal App will allow users to track a daily journal for different activities or
     emotions they wish to track progress or data on. They will be able to customize the data

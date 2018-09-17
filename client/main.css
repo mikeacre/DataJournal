@@ -50,7 +50,7 @@ body {
 .body{
   border: 1px solid #000;
   border-top: 0;
-  height: inherit;
+  height: -webkit-fill-available;
   position: absolute;
   margin: 0px;
   width: fill;
@@ -106,6 +106,10 @@ nav a:hover{
 
 nav .fa {
   float:left;
+}
+
+.login {
+  max-width: inherit;
 }
 
 
