@@ -118,11 +118,11 @@ nav li :last-child a { border-bottom: none;}
 .menu{
   width: 240px;
   height: 100%;
-  position: absolute;
+  position: fixed;
   background: #7488af;
   left: -237px;
   z-index: 999;
-  top: 0px;
+  top: 0;
   transition: all .3s ease-in-out;
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
@@ -148,7 +148,7 @@ nav li :last-child a { border-bottom: none;}
 .menu-icon {
   border: 3px solid #000;
   border-left: 0;
-  position: absolute;
+  position: fixed;
   padding:10px;
   padding-right: 20px;
   padding-left: 20px;
@@ -178,9 +178,9 @@ nav li :last-child a { border-bottom: none;}
   display: none;
 
  }
-#menuToggle:checked ~ .menu { position: absolute; left: 0; }
-#menuToggle:checked ~ .menu-icon { position: absolute; left: 237px; }
-#menuToggle:click ~ .menu-icon { position: absolute; left: 237px; }
+#menuToggle:checked ~ .menu { position: fixed; left: 0; }
+#menuToggle:checked ~ .menu-icon { position: fixed; left: 237px; }
+#menuToggle:click ~ .menu-icon { position: fixed; left: 237px; }
 
 .journalbook {
   background-color: #fff;
