@@ -27,16 +27,10 @@ Meteor.startup(() =>
   AWS.config.update({
     accessKeyId: Meteor.settings.AWS_KEY,
     secretAccessKey: Meteor.settings.AWS_SECRET,
-    region: 'us-east-1',
+    region: 'us-east-2',
 
 
   });
-
-  WebApp.rawConnectHandlers.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    return next();
-  });
-
 
 
 });
@@ -54,9 +48,12 @@ Meteor.methods({
     var params = {
       Bucket: 'datajournal',
       Key: key,
-      Expires: 6000
+      Expires: 6000,
+
     };
-    s3 = new AWS.S3();
+    
+    s3 = new AWS.S3({region: 'us-east-2'});
+
     return s3.getSignedUrl('getObject', params);
 
   },
@@ -65,7 +62,9 @@ Meteor.methods({
       Bucket: 'datajournal',
       Key: key
     };
+
     s3 = new AWS.S3();
+
     var data = s3.getObject(params).promise();
     data.then(function(result){
       encoded = Meteor.call('encode', result.Body);

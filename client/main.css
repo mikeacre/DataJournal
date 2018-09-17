@@ -11,6 +11,10 @@ body {
   margin-bottom: 25px;
 }
 
+.bucket_photo{
+  width: 100%;
+}
+
 .header h1 {
   color: #fff;
   font-weight: bolder;
