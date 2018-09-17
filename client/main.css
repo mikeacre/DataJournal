@@ -49,6 +49,7 @@ body {
   height: inherit;
   position: absolute;
   margin: 0px;
+  width: fill;
   background-color: #ccc;
   padding-right: 0px;
 }
