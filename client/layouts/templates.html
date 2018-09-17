@@ -1,30 +1,61 @@
 <template name="MainLayout">
-  <div class="body">
-    <div class="header">
-      <h1><a href="/">Data Journal</a></h1>
-      {{> loginButtons}}
-      {{> Nav }}
-    </div>
-    <div class="container">
-      <div class="content">
+  <link href="https://fonts.googleapis.com/css?family=Candal|Poppins:300|Exo:900" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <div id="navmenu">
+    {{> Nav }}
+  </div>
+  <div class="body col-lg-8 col-sm-12">
+    <div class="col-sm-12 header">
+         <h1>Data J<img src="/images/bear-clear@0,1x.png" class="bear">urnal</h1><br>
+         <h2>a bearly intelligent production</h2>
+   </div>
+    <div class="col-sm-12 page
+     col-md-10">
+      <div class="content col-sm-12">
         {{> Template.dynamic template=main}}
       </div>
     </div>
   </div>
 </template>
 
+<template name="Nav">
+  <input type="checkbox" id="menuToggle">
+  <label for="menuToggle" class="menu-icon"><i class="fa fa-bars"></i></label>
+  {{#if currentUser}}
+  <nav class="menu" id="navmenu">
+    <ul>
+      <li><a href="/profile"><i class="fa fa-user"></i>{{user.firstName}} {{user.lastName}}</a></li>
+      <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+      <li><a href="/journals"><i class="fa fa-book"></i>Journals</a></li>
+      <li><a href="/entries"><i class="fa fa-pencil"></i>Entries</a></li>
+      <li><a href="/selectjournal"><li class="fa fa-plus"></li>New Entry</a></li>
+      <li><a href="/analysis"><li class="fa fa-bar-chart"></li>Analysis</a></li>
+      <li><a href="/profile"><li class="fa fa-user"></li>Profile</a></li>
+      <li><a href="/bucket"><li class="fa fa-bitbucket"></li>Show Bucket</a></li>
+    </ul>
+    {{> loginButtons}}
+  </nav>
+  {{else}}
+    <nav class="menu">
+      {{> loginButtons}}
+    </nav>
+  {{/if}}
+</template>
+
 <template name="SelectJournal">
   <header><h1>Select Journal To Create a New Entry</h1></header>
   {{#if journals}}
     {{#each journals}}
-      <div>
-        <b>Name:</b><br>
-        <a href="/newEntry/{{_id}}">{{name}}</a><br>
-        <ol>
-          {{#each datapoints}}
-            <li>{{name}}</li><br>
-          {{/each}}
-        </ol>
+      <div class='col-sm-6'>
+        <div class='journalbook'>
+          <center><a href="/newEntry/{{_id}}">{{name}}</a></center>
+          <ol>
+            {{#each datapoints}}
+              <li>{{name}}</li>
+            {{/each}}
+          </ol>
+        </div>
 
       </div>
     {{/each}}
@@ -97,19 +128,7 @@
     <span class="delete"><li class="fa fa-trash delete">DELETE ENTRY</li></span>
 </template>
 
-<template name="Nav">
-  {{#if currentUser}}
-  ||<a href="/journals">Journals</a>//
-  <a href="/entries">Entries</a>//
-  <a href="/selectjournal"><li class="fa fa-plus"></li>New Entry</a>//
-  <a href="/analysis"><li class="fa fa-chart-pie"></li>Analysis</a>//
-  <a href="/profile"><li class="fa fa-user"></li>Profile</a>//
-  <a href="/bucket"><li class="fa fa-bitbucket"></li>Show Bucket</a>
-  ||
-  {{else}}
-    --- Please Login ---
-  {{/if}}
-</template>
+
 
 <template name="Analysis">
   <div class="row">
@@ -120,7 +139,7 @@
 <template name="ShowBucket">
   Test
   {{#each item in bucketItem}}
-    {{item.Key}}
+    <img src="{{item}}">
   {{/each}}
 </template>
 

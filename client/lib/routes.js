@@ -91,7 +91,7 @@ FlowRouter.route('/analysis', {
     GAnalytics.pageview("profile");
   }
 });
-FlowRouter.route('/NewEntry/:id', {
+FlowRouter.route('/newEntry/:id', {
   name: 'newentry',
   action: function() {
     BlazeLayout.render('MainLayout', {main:'NewEntry'});

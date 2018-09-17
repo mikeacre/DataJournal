@@ -32,6 +32,12 @@ Meteor.startup(() =>
 
   });
 
+  WebApp.rawConnectHandlers.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    return next();
+  });
+
+
 
 });
 
@@ -41,14 +47,36 @@ Meteor.methods({
       Bucket: 'datajournal',
     };
     s3 = new AWS.S3();
-    var test;
-    const bucketObjects = Promise.await(s3.listObjects(params, (err,data)=> {
-      if(err)
-        return err;
-      else {
-        return data;
-      }
-    }));
-    return bucketObjects;
+    var data = s3.listObjects(params).promise();
+    return data;
+  },
+  getTempUrl(key){
+    var params = {
+      Bucket: 'datajournal',
+      Key: key,
+      Expires: 6000
+    };
+    s3 = new AWS.S3();
+    return s3.getSignedUrl('getObject', params);
+
+  },
+  getImage(key){
+    var params = {
+      Bucket: 'datajournal',
+      Key: key
+    };
+    s3 = new AWS.S3();
+    var data = s3.getObject(params).promise();
+    data.then(function(result){
+      encoded = Meteor.call('encode', result.Body);
+      console.log("got promise: "+ encoded)
+    });
+    return data.Body;
+
+  },
+  encode(body){
+    var str = body.reduce(function(a,b){ return a+String.fromCharCode(b) },'');
+    encodedData = btoa(str).replace(/.{76}(?=.)/g,'$&\n');
+    return "data:image/jpeg;base64," + encodedData;
   }
 });

@@ -104,14 +104,15 @@ DataPointSchema = new SimpleSchema({
   type:{
     type: String,
     label: "Type",
-    allowedValues: ['yn', 'on', 'cv', 'string', 'num'],
+    allowedValues: ['yn', 'on', 'cv', 'string', 'num', 'pic'],
     autoform: {
       options:{
         yn : "Yes/No",
         on : "Rating 1-10",
         string : "Text Entry",
         cv : "Custom Options",
-        num : "Number"
+        num : "Number",
+        pic : "Photo"
       },
       class: "testing"
     }
@@ -121,6 +122,38 @@ DataPointSchema = new SimpleSchema({
     label: "Custom Values",
     autoform:{
       placeholder: 'Seperate Options with Commas',
+      type : "hidden"
+    },
+    optional: true
+  },
+  frequency:{
+    type: String,
+    label: "Frequency",
+    allowedValues: ['every', 'weekly', 'monthly','set'],
+    autoform: {
+      options:{
+        every : "Every Entry",
+        weekly : "Weekly",
+        monthly : "Monthly",
+        set : "Custom Days",
+      },
+      class: "frequency",
+    },
+    optional: true,
+  },
+  photo_key: {
+    type: String,
+    label: "Photo Key",
+    autoform:{
+      type : "hidden"
+    },
+    optional: true
+  },
+  custom_frequency: {
+    type: String,
+    label: "Interval in days",
+    autoform:{
+      placeholder: 'min number of days between request',
       type : "hidden"
     },
     optional: true

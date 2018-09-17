@@ -32,7 +32,6 @@ Demo Available at: [http://69.127.86.185:3000] OAuth not currently available on 
 
 * connect to google API (get auto data tracking set up)
 
-
 * add classes to all elements
 
 * create style sheet
