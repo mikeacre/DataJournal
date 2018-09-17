@@ -5,7 +5,7 @@ This data will then be used to find correlation between results or outcomes and 
 
 This will also provide sentiment analysis for the journal entries themselves.  
 
-Demo Available at: [http://69.127.86.185:3000] OAuth not currently available on demo.
+Demo Available at: [http://www.strikesparks.com:3000/] OAuth not currently available on demo.
 
 ## Install Instructions
 
@@ -31,10 +31,6 @@ Demo Available at: [http://69.127.86.185:3000] OAuth not currently available on 
 * add DataHooks (allows to plug in to oauth API's to access your collected data)
 
 * connect to google API (get auto data tracking set up)
-
-* add classes to all elements
-
-* create style sheet
 
 * create admin section
 
